@@ -1,7 +1,5 @@
-CMakeCache.txt
-CMakeFiles/
-local
-Makefile
-cmake_install.cmake
 *.swp
 *.*~
+build/
+debug/
+release/

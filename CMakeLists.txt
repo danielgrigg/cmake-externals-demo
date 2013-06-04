@@ -1,32 +1,17 @@
 cmake_minimum_required(VERSION 2.8)
-set(PROJ exdemo)
-project($PROJ)
+project(exdemo)
 include(ExternalProject)
 
-set(local_PREFIX "${CMAKE_CURRENT_BINARY_DIR}/local")
-set(local_INSTALL_DIR "${CMAKE_CURRENT_BINARY_DIR}/local")
-set(local_CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${local_INSTALL_DIR})
-
-ExternalProject_Add(exru-0.3
+ExternalProject_Add(exru-1.0.0
   PREFIX ${local_PREFIX}
   GIT_REPOSITORY https://github.com/danielgrigg/exru.git
-  GIT_TAG "v0.3"
-  # Uncomment for a local build
-  #  INSTALL_DIR ${local_INSTALL_DIR}
-  #  CMAKE_ARGS ${local_CMAKE_ARGS}
-  )
+  GIT_TAG "v1.0.0")
 
-set(CMAKE_CXX_FLAGS "-std=c++11 -stdlib=libc++")
-include_directories("local/include")
+include_directories(${CMAKE_INSTALL_PREFIX}/include)
 set(SOURCES)
-set(SOURCES ${SOURCES} "src/${PROJ}.cpp")
+set(SOURCES ${SOURCES} "src/exdemo.cpp")
 
-# Uncomment for a local build
-#link_directories(${CMAKE_BINARY_DIR}/local/lib)
-add_executable(${PROJ} ${SOURCES})
-add_dependencies(${PROJ} exru-0.3)
-# Note link_directories is apparently deprecated and
-# users are encouraged to use target_link_libraries directly.
-target_link_libraries(${PROJ} exru)
-install (TARGETS ${PROJ} DESTINATION bin)
-
+add_executable(exdemo ${SOURCES})
+add_dependencies(exdemo exru-1.0.0)
+target_link_libraries(exdemo exru)
+install (TARGETS exdemo DESTINATION bin)
