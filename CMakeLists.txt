@@ -23,4 +23,3 @@ add_executable(exdemo ${SOURCES})
 add_dependencies(exdemo exru-1.0.0)
 target_link_libraries(exdemo exru)
 install (TARGETS exdemo DESTINATION bin)
-
