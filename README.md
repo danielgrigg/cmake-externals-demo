@@ -24,9 +24,14 @@ Ensure openexr and cmake are installed:
 
 # Running 
 
-+ Mac OS X
+./exdemo-run.sh
 
-  exdemo && open /tmp/externals.exr
+The exdemo-run.sh script ensures libexru is correctly loaded and should
+work on most unixes.
+
+The test file is written to /tmp/externals.exr. On Mac OS X:
+
+open /tmp/externals.exr
 
 
 Copyright &copy; 2013 Daniel C Grigg
