@@ -8,7 +8,7 @@ Ensure openexr and cmake are installed:
 
 + Ubuntu 
 
-  sudo apt-get install cmake openexr
+  sudo apt-get install cmake libopenexr-dev
 
 + Mac OS X
 
@@ -20,7 +20,11 @@ Ensure openexr and cmake are installed:
   Err..pull request?
 
 
-./install.sh
+  ./install.sh
+
+  Note that the install process without changing permissions on /usr/local (unix),
+  requires elevation of make.  See install.sh for details. The alternative,
+  local external-installs, can be seen in the *relocatable* branch.
 
 # Running 
 
