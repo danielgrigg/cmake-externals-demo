@@ -3,7 +3,6 @@ project(exdemo)
 include(ExternalProject)
 
 ExternalProject_Add(exru-1.0.0
-  PREFIX ${local_PREFIX}
   GIT_REPOSITORY https://github.com/danielgrigg/exru.git
   GIT_TAG "v1.0.0")
 

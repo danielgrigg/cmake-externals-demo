@@ -12,7 +12,11 @@
 # run into this problem again.  B, used here, is quite ugly, since running make
 # as root means you'll need to be root again to remove the externals!
 # Option C. also works - see the relocatable branch.
-sudo rm -rf build
-mkdir build
-cd build
-cmake .. && sudo make install
+  mkdir build
+  cd build
+if [[ $(uname -s) = "Darwin" ]]; then
+  cmake .. && make install
+else
+  # First make invocation we expect install errors
+  cmake .. && make && sudo make install
+fi
