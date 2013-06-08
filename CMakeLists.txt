@@ -10,6 +10,7 @@ include_directories(${CMAKE_INSTALL_PREFIX}/include)
 set(SOURCES)
 set(SOURCES ${SOURCES} "src/exdemo.cpp")
 
+link_directories(${CMAKE_INSTALL_PREFIX}/lib)
 add_executable(exdemo ${SOURCES})
 add_dependencies(exdemo exru-1.0.0)
 target_link_libraries(exdemo exru)

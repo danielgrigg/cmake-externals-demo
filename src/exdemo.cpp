@@ -14,11 +14,6 @@ struct Pixel {
 };
 
 int main(int argc, char**argv) {
-  
-  cout << "exdemo started...\n";
-
-//  float f[4] = {1.0, 0.0, 1.0, 1.0};
-
   const int w = 1280, h = 720;
   vector<Pixel> pixels(w * h);
   for (int y = 0; y < h; ++y) {
@@ -30,9 +25,10 @@ int main(int argc, char**argv) {
     }
   }
 
-  if (!write_rgba(w, h, "/tmp/externs.exr", reinterpret_cast<float*>(&pixels[0]))) {
+  if (!write_rgba(w, h, "externs.exr", reinterpret_cast<float*>(&pixels[0]))) {
     cout << "write_rgba failed\n";
   }
+  cout << "Wrote externs.exr" << endl;
 
   return EXIT_SUCCESS;
 }
